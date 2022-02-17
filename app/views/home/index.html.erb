@@ -1,13 +1,18 @@
 <h1>Home Page</h1>
 
 <% if current_user %>
-    <p>Hello <%= current_user.email %>!</p>
-    <p>You are a [<%= current_user.role %>]</p>
+    <p>Hello <%= current_user.username %>!</p>
+    <p>You are a <%= current_user.role %></p>
     
     <h2>Navigation Button</h2>
     <%= link_to 'Profile page', current_user %>
     <br>
-    <%= link_to 'Company page', current_user.company %>
+    
+    <% if !current_user.company.nil? %>
+        <%= link_to 'Company page', current_user.company %>
+    <% else %>
+        <p>You are not signed to any company</p>
+    <% end %>
     <br>
     <%= link_to 'Sign out', destroy_user_session_path, 'data-turbo-method': :delete %>
     

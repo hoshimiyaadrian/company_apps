@@ -1,4 +1,4 @@
 class Company < ApplicationRecord
-    has_many :users
-    accepts_nested_attributes_for :users, allow_destroy: true
+    has_many :agreements
+    has_many :users, through: :agreements
 end

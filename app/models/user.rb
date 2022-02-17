@@ -10,5 +10,6 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
-  has_one :company
+  has_one :agreement
+  has_one :company, through: :agreement
 end

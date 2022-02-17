@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_17_061608) do
-  create_table "attendances", force: :cascade do |t|
-    t.date "date_of_attendance"
-    t.time "time_of_attendance"
-    t.time "time_of_leaving"
+ActiveRecord::Schema[7.0].define(version: 2022_02_17_195626) do
+  create_table "agreements", force: :cascade do |t|
+    t.string "job_title"
+    t.text "job_desc"
+    t.string "department"
+    t.integer "salary"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "working_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.integer "company_id", null: false
+    t.index ["company_id"], name: "index_agreements_on_company_id"
+    t.index ["user_id"], name: "index_agreements_on_user_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -27,7 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_17_061608) do
     t.text "company_address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,10 +50,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_17_061608) do
     t.date "date_of_birth"
     t.text "address"
     t.string "phone"
-    t.integer "team_id"
-    t.integer "company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "agreements", "companies"
+  add_foreign_key "agreements", "users"
 end
