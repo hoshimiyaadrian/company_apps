@@ -1,0 +1,19 @@
+<h1>Company Page</h1>
+<p>On Progress</p>
+<h2>Navigation Button</h2>
+<%= link_to 'Home', root_path %>
+<br>
+<br>
+
+<h2>Content</h2>
+<p>Company name: <%= @company.company_name %></p>
+<p>CEO: <%= @company.ceo_name %></p>
+<p>Revenue: <%= @company.company_revenue %> USD</p>
+<p>Profit: <%= @company.company_profit %> USD</p>
+<p>Address: <%= @company.company_address %></p>
+
+<% if ((@company == current_user.company)&&(current_user.HigherUps?)) %>
+  <a class="edit-profile" href="<%= edit_company_path(@company) %>">
+    <button>Edit Company Profile</button>
+  </a>
+<% end %>

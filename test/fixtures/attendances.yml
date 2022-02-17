@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_of_attendance: 2022-02-17
+  time_of_attendance: 2022-02-17 13:16:08
+  time_of_leaving: 2022-02-17 13:16:08
+
+two:
+  date_of_attendance: 2022-02-17
+  time_of_attendance: 2022-02-17 13:16:08
+  time_of_leaving: 2022-02-17 13:16:08

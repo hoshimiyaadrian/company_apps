@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_15_202742) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_17_061608) do
+  create_table "attendances", force: :cascade do |t|
+    t.date "date_of_attendance"
+    t.time "time_of_attendance"
+    t.time "time_of_leaving"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "company_name"
+    t.string "ceo_name"
+    t.integer "company_revenue"
+    t.integer "company_profit"
+    t.text "company_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -24,6 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_15_202742) do
     t.date "date_of_birth"
     t.text "address"
     t.string "phone"
+    t.integer "team_id"
+    t.integer "company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

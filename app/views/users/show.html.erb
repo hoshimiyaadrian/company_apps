@@ -1,14 +1,22 @@
 <h1>User Page</h1>
 <p>On Progress</p>
+<h2>Navigation Button</h2>
+<%= link_to 'Home', root_path %>
+<br>
+<br>
 
+<h2>Content</h2>
 <p>
-    User ID : <%= current_user.id %> <br>
-    Name : <%= current_user.username %> <br>
-    Role : <%= current_user.role %> <br>
-    Email : <%= current_user.email %> <br>
-    Date of Birth : <%= current_user.date_of_birth %> <br>
-    Address : <%= current_user.address %> <br>
-    Phone : <%= current_user.phone %> <br>
+  Company : <%= current_user.company.company_name %> <br>
+</p>
+<p>
+  User ID : <%= current_user.id %> <br>
+  Name : <%= current_user.username %> <br>
+  Role : <%= current_user.role %> <br>
+  Email : <%= current_user.email %> <br>
+  Date of Birth : <%= current_user.date_of_birth %> <br>
+  Address : <%= current_user.address %> <br>
+  Phone : <%= current_user.phone %> <br>
 </p>
 
 <% if @user == current_user %>
