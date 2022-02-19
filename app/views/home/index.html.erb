@@ -2,8 +2,10 @@
 
 <% if current_user %>
     <p>Hello <%= current_user.username %>!</p>
-    <p>You are a <%= current_user.role %></p>
-    
+    <% if !current_user.agreement.nil? %>
+        <p>You are a <%= current_user.agreement.role %></p>
+    <% end %>
+
     <h2>Navigation Button</h2>
     <%= link_to 'Profile page', current_user %>
     <br>
@@ -23,7 +25,22 @@
     <a class="button">
         <button>Leaving</button>
     </a>
+    <br>
+
+    <% if current_user.agreement.HR? %>
+        <h2>Unsinged User</h2>
+        <ul>
+            <% @users.each do |user| %>
+            <li>
+                <% if user.agreement.nil? %>
+                    <%= link_to user.username, user %>   
+                <% end %>
+            </li>
+            <% end %>
+        </ul>
+    <% end %>
     
+
 <% else %>
     <p>You are not signed in.</p>
     <%= link_to 'Sign Up', new_user_registration_path %>

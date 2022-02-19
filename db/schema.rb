@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_17_195626) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_18_094443) do
   create_table "agreements", force: :cascade do |t|
     t.string "job_title"
     t.text "job_desc"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_17_195626) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "company_id", null: false
+    t.integer "role", default: 0
     t.index ["company_id"], name: "index_agreements_on_company_id"
     t.index ["user_id"], name: "index_agreements_on_user_id"
   end
@@ -43,7 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_17_195626) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"

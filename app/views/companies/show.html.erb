@@ -12,7 +12,7 @@
 <p>Profit: <%= @company.company_profit %> USD</p>
 <p>Address: <%= @company.company_address %></p>
 
-<% if ((@company == current_user.company)&&(current_user.HigherUps?)) %>
+<% if ((@company == current_user.company)&&(current_user.agreement.HigherUps?)) %>
   <a class="edit-profile" href="<%= edit_company_path(@company) %>">
     <button>Edit Company Profile</button>
   </a>
