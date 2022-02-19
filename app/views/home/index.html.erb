@@ -27,19 +27,18 @@
     </a>
     <br>
 
-    <% if current_user.agreement.HR? %>
-        <h2>Unsinged User</h2>
-        <ul>
-            <% @users.each do |user| %>
-            <li>
-                <% if user.agreement.nil? %>
-                    <%= link_to user.username, user %>   
+    <% if !current_user.company.nil? %>
+        <% if current_user.agreement.HR? %>
+            <h2>Unsinged User</h2>
+            <ul>
+                <% @users.each do |user| %>
+                    <% if user.agreement.nil? %>
+                    <li> <%= link_to user.username, user %></li>
+                    <% end %>
                 <% end %>
-            </li>
-            <% end %>
-        </ul>
+            </ul>
+        <% end %>
     <% end %>
-    
 
 <% else %>
     <p>You are not signed in.</p>
