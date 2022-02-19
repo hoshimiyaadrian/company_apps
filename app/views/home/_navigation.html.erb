@@ -1,0 +1,9 @@
+<h2>Navigation Button</h2>
+<%= link_to 'Profile page', current_user %>
+<br>
+
+<% if !current_user.company.nil? %>
+    <%= link_to 'Company page', current_user.company %>
+<% end %>
+<br>
+<%= link_to 'Sign out', destroy_user_session_path, 'data-turbo-method': :delete %>

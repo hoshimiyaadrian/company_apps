@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_one :agreement
   has_one :company, through: :agreement
+  has_many :tasks, dependent: :destroy
 end

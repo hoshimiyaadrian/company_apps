@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_18_094443) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_19_181630) do
   create_table "agreements", force: :cascade do |t|
     t.string "job_title"
     t.text "job_desc"
@@ -38,6 +38,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_18_094443) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "task_name"
+    t.text "task_desc"
+    t.integer "task_status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -56,4 +66,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_18_094443) do
 
   add_foreign_key "agreements", "companies"
   add_foreign_key "agreements", "users"
+  add_foreign_key "tasks", "users"
 end

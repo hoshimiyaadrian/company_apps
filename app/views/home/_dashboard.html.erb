@@ -1,0 +1,31 @@
+<h1>Dashboard</h1>
+<%= render 'navigation' %>
+
+<p>Hello <%= current_user.username %>!</p>
+<% if !current_user.agreement.nil? %>
+        <p>You are a <%= current_user.agreement.role %></p>
+<% end %>
+
+<% if !current_user.company.nil? %>
+    <% if !current_user.agreement.HigherUps? %>
+        <%= render 'contentforEmployee' %>
+    <% end %>
+    
+    <% if current_user.agreement.HR? %>
+        <%= render 'contentforHR' %>
+    <% end %>
+    
+    <% if current_user.agreement.SectionHead? %>
+        <%= render 'contentforSectionHead' %>
+    <% end %>
+
+    <% if current_user.agreement.developer? %>
+        <%= render 'contentforDeveloper' %>
+    <% end %>
+
+    <% if current_user.agreement.intern? %>
+        <%= render 'contentforIntern' %>
+    <% end %>
+<% else %>
+    <p>You are not signed to any company</p>
+<% end %>
