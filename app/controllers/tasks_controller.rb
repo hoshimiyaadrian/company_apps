@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+    before_action :set_task, only: [:show, :edit, :update, :destory]
     def index
         @tasks = Task.all.order("created_at DESC")
     end
@@ -18,6 +19,11 @@ class TasksController < ApplicationController
     end
     
     def update
+        if @task.save
+            redirect_to root_path
+        else
+            render :new
+        end
     end
     
     def destroy
