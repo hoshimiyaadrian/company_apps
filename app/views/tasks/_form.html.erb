@@ -1,0 +1,8 @@
+<%= simple_form_for @task do |f|%>
+    <%= f.error_notification %>
+    <%= f.input :task_name %>
+    <%= f.input :task_desc %>
+    <%= f.input :task_status %>
+    <%= f.input :user_id %>
+    <%= f.button :submit %>
+<% end %>

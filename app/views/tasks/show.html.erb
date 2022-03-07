@@ -1,6 +1,8 @@
 <h1>Task Page</h1>
 <p>
     Task name: <%= @task.task_name %> <br>
+    Assign to: <%= @task.user_id %> <br>
     Description: <%= @task.task_desc %> <br>
     Status: <%= @task.task_status %> <br>
 </p>
+<%= link_to 'Edit Task', edit_task_path(@task) %>
