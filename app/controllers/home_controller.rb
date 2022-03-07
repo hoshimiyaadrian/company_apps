@@ -1,9 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
-  end
-
-  def show
-    @user  = User.find(params[:id])
+    if user_signed_in?
+      @users = User.all
+      @tasks = Task.where(user_id: current_user.id)  
+    end
   end
 end

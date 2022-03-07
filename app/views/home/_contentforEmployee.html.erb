@@ -1,7 +1,13 @@
-<h2>Attendance button</h2>
+<h2>Attendance</h2>
 <a class="button">
     <button>Attend</button>
 </a>
 <a class="button">
     <button>Leaving</button>
 </a>
+
+
+<h2>Task</h2>
+<% @tasks.each do |task| %>
+    <li><%= link_to task.task_name, task %></li>
+<% end %>

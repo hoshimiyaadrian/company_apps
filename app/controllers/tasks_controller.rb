@@ -8,14 +8,14 @@ class TasksController < ApplicationController
     end
     
     def new
-        @task = current_user.tasks.build
+        @task = current_user.tasks.new
     end
 
     def edit
     end
 
     def create
-        @task = current_user.tasks.build(task_params)
+        @task = current_user.tasks.create(task_params)
     end
     
     def update
